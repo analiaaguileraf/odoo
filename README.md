@@ -1,32 +1,50 @@
-[![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
-[![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/16.0)
-[![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
-[![Nightly Builds](https://img.shields.io/badge/master-nightly-875A7B.svg?style=flat&colorA=8F8F8F)](https://nightly.odoo.com/)
+Proceso de configuración Odoo 16.
 
-Odoo
-----
+-VISTA ADM LOGIN:
+Usuario: analiaaguilera@gmail.com
+pass: 6qtz-et7g-irmx
 
-Odoo is a suite of web based open source business apps.
+-VISTA USUARIO LOGIN:
+Usuario: analiaaguilerag@gmail.com
+pass: prueba123
 
-The main Odoo Apps include an <a href="https://www.odoo.com/page/crm">Open Source CRM</a>,
-<a href="https://www.odoo.com/app/website">Website Builder</a>,
-<a href="https://www.odoo.com/app/ecommerce">eCommerce</a>,
-<a href="https://www.odoo.com/app/inventory">Warehouse Management</a>,
-<a href="https://www.odoo.com/app/project">Project Management</a>,
-<a href="https://www.odoo.com/app/accounting">Billing &amp; Accounting</a>,
-<a href="https://www.odoo.com/app/point-of-sale-shop">Point of Sale</a>,
-<a href="https://www.odoo.com/app/employees">Human Resources</a>,
-<a href="https://www.odoo.com/app/social-marketing">Marketing</a>,
-<a href="https://www.odoo.com/app/manufacturing">Manufacturing</a>,
-<a href="https://www.odoo.com/">...</a>
+Paso 1.
+Descargar odoo version 16.
 
-Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get
-a full-featured <a href="https://www.odoo.com">Open Source ERP</a> when you install several Apps.
+Paso 2.
+Creamos un archivo launch.json en visual studio code, tiene la función de personalizar la forma en la que se ve el panel de depuración del debugger o debug console.
 
-Getting started with Odoo
--------------------------
+Paso 3.
+Nos dirigimos al archivo odoo.conf en donde se guardará el numero de proceso del servicio de Odoo.
 
-For a standard installation please follow the <a href="https://www.odoo.com/documentation/16.0/administration/install/install.html">Setup instructions</a>
-from the documentation.
+Paso 4.
+Ejecutamos.
 
-To learn the software, we recommend the <a href="https://www.odoo.com/slides">Odoo eLearning</a>, or <a href="https://www.odoo.com/page/scale-up-business-game">Scale-up</a>, the <a href="https://www.odoo.com/page/scale-up-business-game">business game</a>. Developers can start with <a href="https://www.odoo.com/documentation/16.0/developer/howtos.html">the developer tutorials</a>
+Paso 5.
+Nos vamos al navegador y escribimos nuestro http://localhost:8069/web/login.
+
+Paso 6.
+Configuramos los modelos básicos de:
+Producto: Todos los productos cuentan con un nivel de stock mínimo y  un proveedor preferido.
+Proveedor: Creamos un modelo básico de proveedor que incluye nombre, datos de contacto y plazos de pago.
+
+Paso 7.
+Seguimiento de existencias:
+  En el módulo inventario programamos para verificar los niveles de stock diariamente o de baja demanda.
+   Obs. Esto se ejecuta automáticamente a las 00:00 hs. todos los días o bien puede ser de manera manual en** operaciones - ejecutar planificador** para que genere una orden de compra y así proceder a el reabastecimiento del stock.
+   
+Paso 8.
+Creación de Orden de Compra:
+Automaticamente se genera una orden de compra para productos que se encuentren por debajo del nivel mínimo de inventario. Esta orden incluye detalles como proveedor, artículo, cantidad requerida para alcanzar un nivel establecido y fecha de entrega prevista.
+
+Paso 9.
+Aprobación de Orden de Compra:
+  Creamos un flujo de trabajo de aprobación simple en el que cualquier orden de compra generada le notifique a un gerente para su revisión y aprobación.
+  En la VISTA ADM:
+  Seleccionamos un monto mínimo para la aprobación de compra.
+  En la VISTA COMPRADOR (usuario):
+  Creamos manualmente la orden de compra y enviamos la solicitud de aprobación por correo electrónico.
+  En la VISTA ADM:
+  Visualizamos la solicitud de aprobación de la orden de compra para su ejecución.
+GRACIAS :)
+End
